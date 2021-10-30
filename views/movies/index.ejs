@@ -1,0 +1,36 @@
+<%- include("../partials/html-head") %>
+
+<link rel="stylesheet" href="/stylesheets/movies/index.css">
+  
+<%- include("../partials/nav") %>
+<main>
+  <h1>Movie List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Release Year</th>
+        <th>Details</th>
+        <th>Delete ☠</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# Oh hey, this is an ejs comment! It starts with a # %>
+      <% movies.forEach(m => { %>
+        <tr>
+          <td><%= m.title %></td>
+          <td><%= m.releaseYear %></td>
+          <td>
+            <a href="/movies/<%= m._id %>">DETAILS</a>
+          </td>
+          <td>
+            <form action="/movies/<%= m._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+<%- include("../partials/footer") %>
