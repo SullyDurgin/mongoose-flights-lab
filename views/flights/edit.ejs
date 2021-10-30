@@ -24,10 +24,16 @@
             <option value="SAN">SAN</option>
           </select>
         </label><br>
+          <label>Ticket Price:
+            <input type="text" name="price" value="<%= flight.price%>">
+          </label><br>
         <label>Seats Available:
           <input type="checkbox" name="seatsAvail" <%=flight.seatsAvail ? "checked" : "" %>
           id="seats-available-checkbox"
           >
+        </label><br>
+        <label>Seat Number:
+          <input type="text" name="seat" value="<%= flight.seat%>">
         </label><br>
         <button type="submit">Submit Updates</button>
       </form>

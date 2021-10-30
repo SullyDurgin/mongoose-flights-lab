@@ -25,8 +25,16 @@
         <div>Departs on: </div>
         <div>
           <%= flight.departs.join(", ") %></div>
+          <div>Ticket Price: </div>
+          <div>
+            <%= flight.price%>
+          </div>
     <div>Seats Available: </div>
     <div><%= flight.seatsAvail ? " Yes" : "Nope" %>
+        </div>
+        <div>Seat Number: </div>
+        <div>
+          <%= flight.seat%>
         </div>
       </section>
             </main>
