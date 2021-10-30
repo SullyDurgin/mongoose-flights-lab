@@ -1,10 +1,8 @@
 
 import mongoose from "mongoose"
 
-// Connecting to the database on Atlas
 mongoose.connect(process.env.DATABASE_URL)
 
-// Logging out the connection to the database on Atlas
 const db = mongoose.connection
 
 db.on("connected", function() {

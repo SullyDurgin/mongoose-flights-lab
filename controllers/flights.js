@@ -1,30 +1,24 @@
-
 import { Flight } from '../models/flight.js'
 
-
-function newFlight(req, res) {
+function newflight(req, res) {
 	res.render('flights/new', {
 		airline: 'Add Flight',
 	})
 }
 
-//
 function create(req, res) {
-
-	req.body.departure = !!req.body.departure
+	req.body.seatsAvail = !!req.body.seatsAvail
 	console.log(req.body)
-
-	if (req.body.cast) {
-		req.body.cast = req.body.cast.split(', ')
+	if (req.body.departs) {
+		req.body.departs = req.body.departs.split(', ')
 	}
 	for (let key in req.body) {
-	
 		if (req.body[key] === '') {
 			delete req.body[key]
 		}
 	}
 
-Flight.create(req.body, function (error, flight) {
+	Flight.create(req.body, function (error, flight) {
 		if (error) {
 			console.log(error)
 			return res.redirect('/flights/new')
@@ -34,11 +28,11 @@ Flight.create(req.body, function (error, flight) {
 }
 
 function index(req, res) {
-	Flight.find({}, function (error, flightss) {
+	Flight.find({}, function (error, flights) {
 		res.render('flights/index', {
 			flights,
 			error,
-			airline: 'All Flights',
+			airline: 'All flights',
 		})
 	})
 }
@@ -52,7 +46,7 @@ function show(req, res) {
 	})
 }
 
-function deleteFlight(req, res) {
+function deleteflight(req, res) {
 	console.log('deleting flight: ', req.params.id)
 	Flight.findByIdAndDelete(req.params.id, function (err, flight) {
 		console.log(flight)
@@ -65,15 +59,15 @@ function edit(req, res) {
 	Flight.findById(req.params.id, function (error, flight) {
 		console.log(flight)
 		res.render('flights/edit', {
-			airline: 'Edit Flight Information',
+			airline: 'Edit a flight!',
 			flight,
 		})
 	})
 }
 
 function update(req, res) {
-	console.log('editing a flight:', req.params.id)
-	req.body.departure = !!req.body.departure
+	console.log('remaking a flight:', req.params.id)
+	req.body.seatsAvail = !!req.body.seatsAvail
 
 	for (let key in req.body) {
 		if (req.body[key] === '') {
@@ -85,25 +79,13 @@ function update(req, res) {
 	})
 }
 
-function createReview(req, res) {
-	console.log('creating review associated with:', req.params.id)
-	console.log(req.body)
-	Flight.findById(req.params.id, function (error, flight) {
-		flight.reviews.push(req.body)
-		console.log(flight)
-		flight.save(function (err) {
-			res.redirect(`/flights/${flight._id}`)
-		})
-	})
-}
 
 export {
-	newFlight as new,
+	newflight as new,
 	create,
 	index,
 	show,
-	deleteFlight as delete,
+	deleteflight as delete,
 	edit,
 	update,
-	createReview,
 }
