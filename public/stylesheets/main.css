@@ -30,6 +30,16 @@ body {
  
 }
 
+#home{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  background-image: url("https://i.ibb.co/NYpk1zM/254360.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
 
 
 body > main {
@@ -46,15 +56,17 @@ body > main {
 
 body > main h1:first-child {
   margin-bottom: 50px;
+  font-family: monospace;
   
 }
 
 body > nav {
   border: solid rgb(78, 76, 77);
+  font-family: monospace;
   grid-area: nav;
   color:rgb(131, 143, 159);
   font-size: 30px;
- background-color: #0c2050;
+  background-color: #0c2050;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +96,7 @@ nav > a:visited {
 
 nav > a:hover {
   color: white;
-  background-color: #f0f5f6;
+  background-color: #747cc8;
 }
 
 nav > a.active {

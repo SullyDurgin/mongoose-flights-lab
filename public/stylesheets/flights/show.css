@@ -11,6 +11,7 @@ table {
   display: grid;
   justify-content: space-evenly;
   border: solid;
+  outline: dashed;
   font-size: 40px;
 }
 

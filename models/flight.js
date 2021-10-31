@@ -18,6 +18,20 @@ const ticketSchema = new Schema(
 	}
 )
 
+// const destinationSchema = new Schema(
+// 	{
+// 	airport: {
+// 		type: String,
+// 		required: true,
+// 		default: 'DEN',
+// 		enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
+// 	},
+
+// 	destination: {
+// 		type: flight._id
+// 	}
+// })
+
 const flightSchema = new Schema(
 	{
 		airline: {
