@@ -12,7 +12,7 @@
         <div>Airline: </div>
         <div>
           <%= flight.airline %>
-            <a href="/flights/<%= flight._id %>/edit">Edit Flight Information</a>
+            <a href="/flights/<%= flight._id %>/edit"> Edit Flight Information</a>
         </div>
         <div>Flight Number: </div>
         <div>
@@ -27,14 +27,14 @@
           <%= flight.departs.join(", ") %></div>
           <div>Ticket Price: </div>
           <div>
-            <%= flight.price%>
+            <%= flight.price %>
           </div>
     <div>Seats Available: </div>
-    <div><%= flight.seatsAvail ? " Yes" : "Nope" %>
+    <div><%= flight.seatsAvail ? " Yes" : "No" %>
         </div>
         <div>Seat Number: </div>
         <div>
-          <%= flight.seat%>
+          <%= flight.seat %>
         </div>
       </section>
             </main>

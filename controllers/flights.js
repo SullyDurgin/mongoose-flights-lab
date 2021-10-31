@@ -40,7 +40,7 @@ function index(req, res) {
 function show(req, res) {
 	Flight.findById(req.params.id, function (err, flight) {
 		res.render('flights/show', {
-			airline: `${flight.airline}'s Details`,
+			airline: `Flight Number ${flight.flightNo}'s Details`,
 			flight,
 		})
 	})
@@ -78,7 +78,6 @@ function update(req, res) {
 		res.redirect(`/flights/${flight._id}`)
 	})
 }
-
 
 export {
 	newflight as new,
