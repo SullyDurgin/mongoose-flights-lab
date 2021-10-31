@@ -7,8 +7,13 @@
       <h1>Enter a New Flight</h1>
       <form action="/flights" method="POST">
         <label>Airline:
-          <input type="text" name="airline">
-        </label><br>
+          <select name="airline">
+            <option value="American">American</option>
+            <option value="Delta">Delta</option>
+            <option value="Jet Blue">Jet Blue</option>
+            <option value="United">United</option>
+            <option value="Spirit">Spirit</option>
+          </select><br>
         <label>Flight Number:
           <input type="text" name="flightNo">
         </label><br>
@@ -20,9 +25,6 @@
             <option value="LAX">LAX</option>
             <option value="SAN">SAN</option>
           </select>
-        </label><br>
-        <label>Departs On:
-          <input type="datetime-local" name="departs">
         </label><br>
         <label>Ticket Price:
           <input type="text" name="price">
