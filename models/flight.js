@@ -38,7 +38,9 @@ const flightSchema = new Schema(
 		departs: {
 			type: Date,
 			default: function () {
-			let date = new Date().getFullYear
+				let now = new Date();
+			  let oneYear = new Date();
+      oneYear.setYear(now.getYear() + 1);
 			},
 		},
 		tickets: [ticketSchema],
@@ -47,7 +49,6 @@ const flightSchema = new Schema(
 		timestamps: true,
 	}
 )
-
 
 const Flight = mongoose.model('Flight', flightSchema)
 
