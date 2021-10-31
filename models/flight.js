@@ -23,9 +23,6 @@ const flightSchema = new Schema(
 		airline: {
 			type: String,
 			required: true,
-			type: String,
-			required: true,
-			enum: ['American', 'Delta', 'Jet Blue', 'United', 'Spirit'],
 		},
 		airport: {
 			type: String,
@@ -41,10 +38,10 @@ const flightSchema = new Schema(
 		departs: {
 			type: Date,
 			default: function () {
-				let now = new Date()
-				let oneYear = new Date()
-				oneYear.setFullYear(now.getFullYear() + 1)
-				return oneYear
+				let now = new Date();
+			  let oneYear = new Date();
+      oneYear.setFullYear(now.getYear() + 1);
+			return oneYear
 			},
 		},
 		tickets: [ticketSchema],
