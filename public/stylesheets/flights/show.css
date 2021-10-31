@@ -1,6 +1,6 @@
 ul {
-  margin: 0 0 1.6rem;
-  padding: 0;
+  display: grid;
+  justify-content: center;
   list-style: none;
 }
 
@@ -10,6 +10,7 @@ li {
 
 table {
   font-size: 2rem;
+  padding: 20px;
 }
 
 table thead th {
@@ -18,21 +19,21 @@ table thead th {
 }
 
 table td {
-  padding: 10px;
-  text-align: center;
+  padding: 20px;
+ 
 }
 
 form * {
-  padding: 5px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 15px;
 }
 
-section {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1.6rem;
-}
 
 section div:nth-child(even) {
   font-weight: bold;
+  padding: 20px;
+}
+
+#tickets {
+  padding: 0px;
 }

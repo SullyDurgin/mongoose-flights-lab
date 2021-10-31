@@ -2,40 +2,53 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const flightSchema = new Schema(
+const ticketSchema = new Schema(
 	{
-		airline: {
+		seat: {
 			type: String,
-			required: true,
+			match: /[A-F][1-9]\d?/,
 		},
-
-		flightNo: {
+		price: {
 			type: Number,
+			min: 0,
 		},
-
-		airport: {
-			type: String,
-			enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
-		},
-		departs: [String],
-		seatsAvail: Boolean,
 	},
 	{
 		timestamps: true,
 	}
 )
 
-const ticketSchema = new Schema({
-	seat: {
-		type: String,
-		match: /[A-F][1-9]\d?/,
+const flightSchema = new Schema(
+	{
+		airline: {
+			type: String,
+			required: true,
+		},
+		airport: {
+			type: String,
+			required: true,
+			default: 'DEN',
+			enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
+		},
+		flightNo: {
+			type: Number,
+			min: 10,
+			max: 9999,
+		},
+		departs: {
+			type: Date,
+			default: function () {
+			let date = new Date().getFullYear
+			},
+		},
+		tickets: [ticketSchema],
 	},
+	{
+		timestamps: true,
+	}
+)
 
-	price: {
-		type: Number,
-	},
-})
 
-const Flight = mongoose.model('Flight', flightSchema, 'Ticket', ticketSchema)
+const Flight = mongoose.model('Flight', flightSchema)
 
 export { Flight }

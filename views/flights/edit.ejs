@@ -4,7 +4,7 @@
 
   <%- include("../partials/nav") %>
     <main>
-      <h1>Edit Flight Information</h1>
+      <h1>Edit Flight Info</h1>
       <form action="/flights/<%= flight._id %>?_method=PUT" method="POST">
         <label>Airline:
           <input type="text" name="airline" value="<%= flight.airline%>">
@@ -17,25 +17,19 @@
             <option value="<%= flight.airport %>">
               <%= flight.airport%>
             </option>
-            <option value="AUS">AUS</option>
-            <option value="DFW">DFW</option>
-            <option value="DEN">DEN</option>
-            <option value="LAX">LAX</option>
-            <option value="SAN">SAN</option>
+          <option value="AUS">AUS</option>
+          <option value="DFW">DFW</option>
+          <option value="DEN">DEN</option>
+          <option value="LAX">LAX</option>
+          <option value="SAN">SAN</option>
           </select>
         </label><br>
-          <label>Ticket Price:
-            <input type="text" name="price" value="<%= flight.price%>">
-          </label><br>
         <label>Seats Available:
           <input type="checkbox" name="seatsAvail" <%=flight.seatsAvail ? "checked" : "" %>
-          id="seats-available-checkbox"
+          id="seats-checkbox"
           >
         </label><br>
-        <label>Seat Number:
-          <input type="text" name="seat" value="<%= flight.seat%>">
-        </label><br>
-        <button type="submit">Submit Updates</button>
+        <button type="submit">Edit flight</button>
       </form>
     </main>
 
