@@ -18,20 +18,6 @@ const ticketSchema = new Schema(
 	}
 )
 
-// const destinationSchema = new Schema(
-// 	{
-// 	airport: {
-// 		type: String,
-// 		required: true,
-// 		default: 'DEN',
-// 		enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
-// 	},
-
-// 	destination: {
-// 		type: flight._id
-// 	}
-// })
-
 const flightSchema = new Schema(
 	{
 		airline: {
@@ -52,12 +38,18 @@ const flightSchema = new Schema(
 		departs: {
 			type: Date,
 			default: function () {
-				let now = new Date();
-			  let oneYear = new Date();
-      oneYear.setFullYear(now.getYear() + 1);
-			return oneYear
+				let now = new Date()
+				let oneYear = new Date()
+				oneYear.setFullYear(now.getYear() + 1)
+				return oneYear
 			},
 		},
+		destinations: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Destination',
+			},
+		],
 		tickets: [ticketSchema],
 	},
 	{

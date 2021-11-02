@@ -1,4 +1,5 @@
 import { Flight } from '../models/flight.js'
+import { Destination } from '../models/destination.js'
 
 function newflight(req, res) {
 	res.render('flights/new', {
@@ -37,15 +38,56 @@ function index(req, res) {
 	})
 }
 
+// function show(req, res) {
+// 	Flight.findById(req.params.id, function (err, flight, tickets) {
+// 		res.render('flights/show', {
+// 			airline: `Flight Number ${flight.flightNo}'s Details`,
+// 			flight,
+// 			tickets,
+// 		})
+// 	})
+// }
+
+// function show(req, res) {
+// 	Flight.findById(req.params.id)
+// 		.populate('destinations')
+// 		.exec(function (err, flight) {
+// 			Destination.find(
+// 				{ _id: { $nin: flight.destinations}},
+// 				function (err, flight) {
+// 					flight.tickets.forEach(function (ticket) {
+// 						total += ticket.rating
+// 					})
+// 					res.render('flights/show', {
+// 						airline: `${flight.airline}'s Details`,
+// 						flight,
+// 						destinations,
+// 					})
+// 				}
+// 			)
+// 		})
+// }
+
+
+
 function show(req, res) {
-	Flight.findById(req.params.id, function (err, flight, tickets) {
-		res.render('flights/show', {
-			airline: `Flight Number ${flight.flightNo}'s Details`,
-			flight,
-			tickets,
+	Flight.findById(req.params.id)
+		.populate('destinations')
+		.exec(function (error, flight) {
+			Destination.find(
+				{ _id: { $nin: flight.destinations } },
+				function (error, destinations) {
+					console.log(error)
+					res.render('flights/show', {
+						airline: `${flight.airline}'s Details`,
+						flight,
+						destinations,
+					})
+				}
+			)
 		})
-	})
 }
+
 
 function deleteflight(req, res) {
 	console.log('deleting flight: ', req.params.id)
@@ -101,6 +143,15 @@ function deleteTicket(req, res) {
 	})
 }
 
+function addToDestination(req, res) {
+	flight.findById(req.params.id, function (err, flight) {
+		flight.departs.push(req.body.destinationId)
+		flight.save(function (err) {
+			res.redirect(`/flights/${flight._id}`)
+		})
+	})
+}
+
 export {
 	newflight as new,
 	create,
@@ -111,4 +162,5 @@ export {
 	update,
 	createTicket,
 	deleteTicket,
+	addToDestination,
 }
