@@ -40,3 +40,16 @@ section div:nth-child(even) {
 #tickets {
   display: inline-block;
 }
+
+#deltic {
+   display: inline-block;
+  background-color: red;
+  border: none;
+  border-radius: 15%;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  cursor: pointer;
+}

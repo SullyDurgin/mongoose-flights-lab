@@ -67,7 +67,7 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-	console.log('remaking a flight:', req.params.id)
+	console.log('updating a flight:', req.params.id)
 	req.body.seatsAvail = !!req.body.seatsAvail
 
 	for (let key in req.body) {
@@ -91,6 +91,16 @@ function createTicket(req, res) {
 	})
 }
 
+function deleteTicket(req, res) {
+	console.log('deleting ticket:', req.params.id)
+	Flight.findById(req.params.flightID, function (error, flight) {
+		flight.tickets.remove({ _id: req.params.ticketId })
+		flight.save(function (error) {
+			res.redirect(`/flights/${flight._id}`)
+		})
+	})
+}
+
 export {
 	newflight as new,
 	create,
@@ -100,4 +110,5 @@ export {
 	edit,
 	update,
 	createTicket,
+	deleteTicket,
 }
