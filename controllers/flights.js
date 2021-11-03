@@ -48,7 +48,7 @@ function show(req, res) {
 				function (error, destinations) {
 					console.log(error)
 					res.render('flights/show', {
-						title: `${flight.title}'s Details`,
+						title: `${flight.flightNo}'s Details`,
 						flight,
 						destinations,
 					})
