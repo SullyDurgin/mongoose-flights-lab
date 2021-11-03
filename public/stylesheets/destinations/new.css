@@ -1,0 +1,21 @@
+form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1.6rem;
+  
+}
+
+form * {
+  padding: 5px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 30px;
+  
+}
+
+form > button {
+  font-size: 1.6rem;
+  width: 16rem;
+  grid-column: 2 / 3;
+  
+}

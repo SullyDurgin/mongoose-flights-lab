@@ -8,7 +8,7 @@
       <div>
       <a href="/flights/<%= flight._id %>/edit">Edit flight</a></div>
       <h1>
-        <%= airline %>
+        <%= title %>
       </h1>
       <section>
         <div>Airline: </div>
@@ -19,24 +19,28 @@
         <div>
           <%= flight.flightNo%>
         </div>
-        <div>Airport: </div>
+        <div>Departs from: </div>
         <div>
           <%= flight.airport %>
         </div>
         <div>Departs At: </div>
         <div>
           <%= flight.departs %></div>
+          <div>Destination: </div>
+          <ul>
+          
+            <%- flight.destinations.map(d=> `<li>${d.airport}</li>`).join('') %>
+          
+          </ul>
         </div><br>
-        <h1>Destinations:</h1>
-        <ul>
-        <%- flight.destinations.map(d => `<li>${d.airport}</li>`).join('') %> 
-      </ul>
+       
+        
         </section>
         <form id="add-destination" action="/flights/<%= flight._id %>/destinations" method="POST">
           <select name="destinationId">
             <%- destinations.map(d => `<option value="${d._id}">${d.airport}</option>`).join("") %>
           </select>
-          <button type="submit">Add to Destinations</button>
+          <button type="submit">Add to Flight</button>
         </form>
       
       <div id="tickets">
